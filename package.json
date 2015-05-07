@@ -24,6 +24,6 @@
   "dependencies": {
     "polymorphic": "^1.2.2",
     "semver": "^4.3.4",
-    "submerge": "^1.0.2"
+    "submerge": "^1.0.3"
   }
 }
