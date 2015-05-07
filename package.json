@@ -1,0 +1,29 @@
+{
+  "name": "wanted",
+  "version": "0.0.1",
+  "description": "Get dependencies on par programmatically",
+  "main": "lib/wanted.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/konfirm/node-wanted.git"
+  },
+  "keywords": [
+    "dependency",
+    "update",
+    "install"
+  ],
+  "author": "Rogier Spieker",
+  "license": "GPLv2",
+  "bugs": {
+    "url": "https://github.com/konfirm/node-wanted/issues"
+  },
+  "homepage": "https://github.com/konfirm/node-wanted",
+  "dependencies": {
+    "polymorphic": "^1.2.2",
+    "semver": "^4.3.4",
+    "submerge": "^1.0.2"
+  }
+}
