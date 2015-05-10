@@ -53,7 +53,7 @@ lab.experiment('Wanted - Upgrade', function() {
 					polymorphic: '^1.0.0'
 				},
 				devDependencies: {
-					blame: '^1.2.0',    //  blame gets an dependency upgrade
+					blame: '~1.1.0',    //  blame gets an dependency upgrade
 					submerge: '^1.0.0'  //  submerge remains at the same revision
 				}
 			}, function() {
@@ -69,7 +69,7 @@ lab.experiment('Wanted - Upgrade', function() {
 						return module.installed;
 					}).length).to.equal(2);
 					Code.expect(list.filter(function(module) {
-						return module.upgrade;
+						return module.state === 'upgrade';
 					}).length).to.equal(1);
 
 					done();
@@ -83,6 +83,39 @@ lab.experiment('Wanted - Upgrade', function() {
 				wanted.check({path: path});
 			});
 		});
+
+		lab.test('Auto-upgrade dependencies', function(done) {
+			helper.write(path + '/package.json', {
+				dependencies: {
+					polymorphic: '^1.0.0'
+				},
+				devDependencies: {
+					blame: '~1.2.0',    //  blame gets an dependency upgrade
+					submerge: '^1.0.0'  //  submerge remains at the same revision
+				}
+			}, function() {
+				var wanted = new Wanted();
+
+				//  removed the require cache so we can actually upgrade
+				//  the path needs to contain: 'test/dummy_upgrade'
+				helper.purgeRequired('test/dummy_upgrade');
+
+				wanted.on('ready', function(list) {
+					Code.expect(list.length).to.equal(2);
+					Code.expect(list.filter(function(module) {
+						return module.installed;
+					}).length).to.equal(2);
+					Code.expect(list.filter(function(module) {
+						return module.state === 'upgrade';
+					}).length).to.equal(1);
+
+					done();
+				});
+
+				wanted.check({path: path, autoAccept: true});
+			});
+		});
+
 
 		//  this test is actually performed on the 'blame: ^1.2.0' package.json
 		lab.test('Dependencies up-to-date', function(done) {
