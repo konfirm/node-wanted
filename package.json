@@ -4,7 +4,9 @@
   "description": "Get dependencies on par programmatically",
   "main": "lib/wanted.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pretest": "./node_modules/.bin/nsp audit-package",
+    "test": "./node_modules/.bin/lab -f -t 100 -m 3000 test",
+    "test-coverage": "./node_modules/.bin/lab -f -r html -m 3000 -o report.html test"
   },
   "repository": {
     "type": "git",
@@ -22,8 +24,14 @@
   },
   "homepage": "https://github.com/konfirm/node-wanted",
   "dependencies": {
-    "polymorphic": "^1.2.2",
+    "polymorphic": "^1.2.3",
     "semver": "^4.3.4",
     "submerge": "^1.0.3"
+  },
+  "devDependencies": {
+    "code": "^1.4.0",
+    "lab": "^5.8.0",
+    "nsp": "^1.0.1",
+    "rimraf": "^2.3.3"
   }
 }
