@@ -1,6 +1,6 @@
 {
   "name": "wanted",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Get dependencies on par programmatically",
   "main": "lib/wanted.js",
   "scripts": {
