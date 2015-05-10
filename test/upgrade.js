@@ -31,8 +31,11 @@ lab.experiment('Wanted - Upgrade', function() {
 		lab.test('ready handler', {timeout: 5000}, function(done) {
 			var wanted = new Wanted();
 
-			wanted.on('ready', function(report) {
-				Code.expect(report.modules).to.equal(2);
+			wanted.on('ready', function(list) {
+				Code.expect(list.length).to.equal(2);
+				Code.expect(list.filter(function(module) {
+					return module.installed;
+				}).length).to.equal(2);
 
 				done();
 			});
@@ -50,7 +53,8 @@ lab.experiment('Wanted - Upgrade', function() {
 					polymorphic: '^1.0.0'
 				},
 				devDependencies: {
-					blame: '^1.2.0'
+					blame: '^1.2.0',    //  blame gets an dependency upgrade
+					submerge: '^1.0.0'  //  submerge remains at the same revision
 				}
 			}, function() {
 				var wanted = new Wanted();
@@ -59,11 +63,18 @@ lab.experiment('Wanted - Upgrade', function() {
 				//  the path needs to contain: 'test/dummy_upgrade'
 				helper.purgeRequired('test/dummy_upgrade');
 
-				wanted.on('ready', function(report) {
-					Code.expect(report.modules).to.equal(1);
+				wanted.on('ready', function(list) {
+					Code.expect(list.length).to.equal(2);
+					Code.expect(list.filter(function(module) {
+						return module.installed;
+					}).length).to.equal(2);
+					Code.expect(list.filter(function(module) {
+						return module.upgrade;
+					}).length).to.equal(1);
 
 					done();
 				});
+
 
 				wanted.on('install', function(module) {
 					module.accept();
@@ -83,9 +94,14 @@ lab.experiment('Wanted - Upgrade', function() {
 			//  the path needs to contain: 'test/dummy_upgrade'
 			helper.purgeRequired('test/dummy_upgrade');
 
-			wanted.on('ready', function(report) {
-				Code.expect(install).to.equal(0);
-				Code.expect(current).to.equal(1);
+			wanted.on('ready', function(list) {
+				Code.expect(list.length).to.equal(2);
+				Code.expect(list.filter(function(module) {
+					return module.installed;
+				}).length).to.equal(2);
+				Code.expect(list.filter(function(module) {
+					return module.upgrade;
+				}).length).to.equal(0);
 
 				done();
 			});

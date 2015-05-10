@@ -32,8 +32,11 @@ lab.experiment('Wanted - Accepted', function() {
 		lab.test('ready handler', {timeout: 5000}, function(done) {
 			var wanted = new Wanted();
 
-			wanted.on('ready', function(report) {
-				Code.expect(report.modules).to.equal(2);
+			wanted.on('ready', function(list) {
+				Code.expect(list.length).to.equal(2);
+				Code.expect(list.filter(function(module) {
+					return module.installed;
+				}).length).to.equal(2);
 
 				done();
 			});
