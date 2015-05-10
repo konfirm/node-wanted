@@ -1,14 +1,14 @@
 'use strict';
-var wanted = require('./lib/wanted');
+var Wanted = require('./lib/wanted'),
+	wanted = new Wanted();
 
 wanted.on('error', function(error) {
 	console.log('error', error);
 });
 
 wanted.on('install', function(install) {
-	console.log('install', install);
-
 	install.accept();
+	console.log('installing', install);
 });
 
 wanted.on('current', function(module) {
@@ -16,11 +16,11 @@ wanted.on('current', function(module) {
 });
 
 wanted.on('ready', function() {
-	console.log('ready', wanted);
+	console.log('ready');
 });
 
 wanted.on('complete', function(module) {
 	console.log('updated', module);
 });
 
-wanted.check({scope: 'dependencies'});
+wanted.check({scope: 'devDependencies'});
