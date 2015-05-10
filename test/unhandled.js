@@ -12,7 +12,7 @@ lab.experiment('Wanted - Unhandled', function() {
 
 		lab.test('No error handler, throws error', function(done) {
 			var sandbox = helper.sandbox(function(error) {
-					Code.expect(error.message).to.equal('no package.json');
+					Code.expect(error.message).to.equal('No package.json');
 
 					done();
 				});
@@ -34,7 +34,7 @@ lab.experiment('Wanted - Unhandled', function() {
 				var wanted = new Wanted();
 
 				wanted.on('error', function(error) {
-					Code.expect(error).to.equal('no package.json');
+					Code.expect(error).to.equal('No package.json');
 					Code.expect(counter).to.equal(0);
 
 					done();
@@ -47,7 +47,7 @@ lab.experiment('Wanted - Unhandled', function() {
 		lab.test('Removed error handler, throws error', function(done) {
 			var counter = 0,
 				sandbox = helper.sandbox(function(error) {
-					Code.expect(error.message).to.equal('no package.json');
+					Code.expect(error.message).to.equal('No package.json');
 					Code.expect(counter).to.equal(0);
 
 					done();
@@ -89,7 +89,7 @@ lab.experiment('Wanted - Unhandled', function() {
 		lab.test('No error handler, throws error', function(done) {
 			var scope = 'nope',
 				sandbox = helper.sandbox(function(error) {
-					Code.expect(error.message).to.equal('scope not found: ' + scope);
+					Code.expect(error.message).to.equal('Scope not found: ' + scope);
 
 					done();
 				});
