@@ -4,7 +4,7 @@
   "description": "Get dependencies on par programmatically",
   "main": "lib/wanted.js",
   "scripts": {
-    "pretest": "./node_modules/.bin/nsp audit-package",
+    "posttest": "./node_modules/.bin/nsp audit-package",
     "test": "./node_modules/.bin/lab -f -t 100 -m 3000 test",
     "test-coverage": "./node_modules/.bin/lab -f -r html -m 3000 -o report.html test"
   },
