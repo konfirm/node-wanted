@@ -38,7 +38,6 @@ wanted.on('ready', function(state) {
 	});
 
 	console.log('Wanted ready');
-	console.log(state);
 	['current', 'complete', 'install', 'upgrade'].forEach(function(state) {
 		if (state in report) {
 			upgrade = upgrade || state === 'upgrade';
