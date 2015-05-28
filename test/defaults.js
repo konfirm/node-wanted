@@ -3,9 +3,7 @@
 var Code = require('code'),
 	Lab = require('lab'),
 	Wanted = require('../lib/wanted'),
-	helper = require('./helper'),
-	lab = exports.lab = Lab.script(),
-	path;
+	lab = exports.lab = Lab.script();
 
 lab.experiment('Wanted - Defaults', function() {
 	lab.test('Checks the project itself', function(done) {
