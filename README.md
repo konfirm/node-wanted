@@ -73,7 +73,7 @@ wanted.check();
 ### `check([object options])`
 Start the dependency checks, the options object is entirely optional and contains the following (overrulable) settings:
 - `path` (default: the current working directory) - the path to check the package.json and installed modules
-- `scope` (default: `'devDependencies'`) - the scope within the `package.json` (e.g. `dependencies`, `devDependencies`, `optionalDependencies`)
+- `scope` (default: `'devDependencies'`) - the scope within the `package.json` (e.g. `dependencies`, `devDependencies`, `optionalDependencies`). As of version 1.2.0 `scope` may be either a string with the scope name, or an array strings
 - `autoAccept` (default: false) - whether or not to update dependencies automatically (this setting has no effect if an `install`-handler is in place)
 
 ### `on(string event, function handler)`
@@ -101,6 +101,7 @@ The `install`-handler is called for each module which is not 'current', hence it
 - `state`: the state in which the module is according to `Wanted` (for the `install`-event, the value is one of: `'install'` or `'update'`)
 - `accept`: function to call in order to accept the install/update of the module
 - `reject`: function to call in order to reject the install/update of the module
+- `scope`: _(Added in 1.2.0)_ the dependency scope for the module (e.g. `'dependencies'`, `'devDependencies'`)
 
 **NOTE** If an `install`-handler is available, it *must* invoke either `accept` or `reject` as `Wanted` will not continue operation before one of those methods is invoked.
 
