@@ -7,8 +7,19 @@ wanted.on('error', function(error) {
 });
 
 wanted.on('install', function(install) {
-	install.accept();
-	console.log('installing', install);
+	var action = '<unknown>';
+
+	//  prevent updates for non dev-dependencies (will install missing and devDependency modules)
+	if (/^dev/.test(install.scope) || install.state === 'install') {
+		install.accept();
+		action = 'accepted';
+	}
+	else {
+		install.reject();
+		action = 'rejected';
+	}
+
+	console.log('%s %s %s: %s (%s)', action, install.state, install.scope, install.name, install.version);
 });
 
 wanted.on('current', function(module) {
@@ -23,4 +34,4 @@ wanted.on('complete', function(module) {
 	console.log('updated', module);
 });
 
-wanted.check({scope: 'devDependencies'});
+wanted.check({scope: ['dependencies', 'devDependencies']});
