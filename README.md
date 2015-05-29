@@ -3,6 +3,7 @@
 [![Coverage Status](https://coveralls.io/repos/konfirm/node-wanted/badge.svg?branch=master)](https://coveralls.io/r/konfirm/node-wanted?branch=master)
 [![dependencies](https://david-dm.org/konfirm/node-wanted.svg)](https://david-dm.org/konfirm/node-wanted#info=dependencies)
 [![dev-dependencies](https://david-dm.org/konfirm/node-wanted/dev-status.svg)](https://david-dm.org/konfirm/node-wanted#info=devDependencies)
+[![Codacy Badge](https://www.codacy.com/project/badge/cc8e3b668fc6495fbeb7117fdaa61f76)](https://www.codacy.com/app/rogier/node-wanted)
 
 # node-wanted
 Get your (dev)dependencies on par with the versions configured in package.json
