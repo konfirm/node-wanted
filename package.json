@@ -29,14 +29,14 @@
   "dependencies": {
     "minimist": "^1.1.1",
     "polymorphic": "^1.2.7",
-    "semver": "^4.3.6",
+    "semver": "^5.0.1",
     "submerge": "^1.0.8"
   },
   "devDependencies": {
-    "code": "^1.4.0",
-    "coveralls": "^2.11.2",
-    "lab": "^5.9.0",
-    "nsp": "^1.0.1",
-    "rimraf": "^2.3.4"
+    "code": "^1.4.1",
+    "coveralls": "^2.11.3",
+    "lab": "^5.13.0",
+    "nsp": "^1.0.3",
+    "rimraf": "^2.4.2"
   }
 }
