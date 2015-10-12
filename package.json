@@ -21,22 +21,22 @@
     "install"
   ],
   "author": "Rogier Spieker",
-  "license": "GPLv2",
+  "license": "GPL-2.0",
   "bugs": {
     "url": "https://github.com/konfirm/node-wanted/issues"
   },
   "homepage": "https://github.com/konfirm/node-wanted",
   "dependencies": {
-    "minimist": "^1.1.1",
-    "polymorphic": "^1.2.7",
-    "semver": "^5.0.1",
-    "submerge": "^1.0.8"
+    "minimist": "^1.2.0",
+    "polymorphic": "^1.2.8",
+    "semver": "^5.0.3",
+    "submerge": "^1.0.9"
   },
   "devDependencies": {
-    "code": "^1.4.1",
-    "coveralls": "^2.11.3",
-    "lab": "^5.13.0",
-    "nsp": "^1.0.3",
-    "rimraf": "^2.4.2"
+    "code": "^1.5.0",
+    "coveralls": "^2.11.4",
+    "lab": "^6.2.0",
+    "nsp": "^1.1.0",
+    "rimraf": "^2.4.3"
   }
 }
