@@ -77,7 +77,7 @@ lab.experiment('Wanted - Rejected', function() {
 			sandbox.run(function() {
 				var wanted = new Wanted();
 
-				wanted.on('error', function(error) {
+				wanted.on('error', function() {
 					++counter;
 				});
 

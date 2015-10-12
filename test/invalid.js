@@ -69,7 +69,7 @@ lab.experiment('Wanted - Invalid', function() {
 			sandbox.run(function() {
 				var wanted = new Wanted();
 
-				function errorHandler(error) {
+				function errorHandler() {
 					++counter;
 				}
 

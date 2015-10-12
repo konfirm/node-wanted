@@ -139,7 +139,7 @@ lab.experiment('Wanted - Upgrade', function() {
 				done();
 			});
 
-			wanted.on('current', function(module) {
+			wanted.on('current', function() {
 				++current;
 			});
 

@@ -26,7 +26,7 @@ lab.experiment('Wanted - Unhandled', function() {
 
 		lab.test('Error handler, emits error', function(done) {
 			var counter = 0,
-				sandbox = helper.sandbox(function(error) {
+				sandbox = helper.sandbox(function() {
 					++counter;
 				});
 
@@ -56,7 +56,7 @@ lab.experiment('Wanted - Unhandled', function() {
 			sandbox(function() {
 				var wanted = new Wanted();
 
-				wanted.on('error', function(error) {
+				wanted.on('error', function() {
 					++counter;
 				});
 

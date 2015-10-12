@@ -27,8 +27,7 @@ lab.experiment('Wanted - Unknown', function() {
 
 	lab.experiment('Install requirements', function() {
 		lab.test('Require an unknown module', {timeout: 15000}, function(done) {
-			var counter = 0,
-				wanted = new Wanted(),
+			var wanted = new Wanted(),
 				blame = wanted.require('blame');
 
 			//  we expect the blame module to exist and be the (version agnostic) module we wanted
@@ -39,8 +38,7 @@ lab.experiment('Wanted - Unknown', function() {
 		});
 
 		lab.test('Require the now known module, but a different version', {timeout: 15000}, function(done) {
-			var counter = 0,
-				wanted = new Wanted(),
+			var wanted = new Wanted(),
 				module = {
 					name: 'blame',
 					version: '1.0.0'
@@ -57,8 +55,7 @@ lab.experiment('Wanted - Unknown', function() {
 		});
 
 		lab.test('Require the now known module, with a matching semver version', {timeout: 15000}, function(done) {
-			var counter = 0,
-				wanted = new Wanted(),
+			var wanted = new Wanted(),
 				module = {
 					name: 'blame',
 					version: '^1.0.0'
@@ -75,8 +72,7 @@ lab.experiment('Wanted - Unknown', function() {
 		});
 
 		lab.test('Require a known module, but a different version', {timeout: 15000}, function(done) {
-			var counter = 0,
-				wanted = new Wanted(),
+			var wanted = new Wanted(),
 				module = {
 					name: 'submerge',
 					version: '0.0.1'
@@ -93,8 +89,7 @@ lab.experiment('Wanted - Unknown', function() {
 		});
 
 		lab.test('Require a known module, (restore) the configured version', {timeout: 15000}, function(done) {
-			var counter = 0,
-				wanted = new Wanted(),
+			var wanted = new Wanted(),
 				submerge = wanted.require({
 					name: 'submerge'
 				}),
@@ -111,20 +106,19 @@ lab.experiment('Wanted - Unknown', function() {
 		lab.test('Require an unknown module', {timeout: 15000}, function(done) {
 			var counter = 0,
 				wanted = new Wanted(),
-				caught = 0,
 				error, unknown;
 
 			try {
 				unknown = wanted.require(moduleName);
 			}
 			catch (e) {
-				++caught;
+				++counter;
 				error = e;
 			}
 
 			//  we expect to have recieved an error
 			Code.expect(error.message).to.equal('Failed to install: ' + moduleName);
-			Code.expect(caught).to.equal(1);
+			Code.expect(counter).to.equal(1);
 
 			done();
 		});
