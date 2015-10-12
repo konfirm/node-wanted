@@ -130,7 +130,7 @@ lab.experiment('Wanted - Unhandled', function() {
 				var wanted = new Wanted();
 
 				//  attach the error handler
-				wanted.on('error', function(error) {
+				wanted.on('error', function() {
 					++counter;
 				});
 
