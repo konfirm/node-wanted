@@ -77,6 +77,33 @@ Start the dependency checks, the options object is entirely optional and contain
 - `scope` (default: `'devDependencies'`) - the scope within the `package.json` (e.g. `dependencies`, `devDependencies`, `optionalDependencies`). As of version 1.2.0 `scope` may be either a string with the scope name, or an array strings
 - `autoAccept` (default: false) - whether or not to update dependencies automatically (this setting has no effect if an `install`-handler is in place)
 
+### `require(mixed module)` (Added in 1.3.0)
+Require a module, which is installed if needed. There are two ways of using it:
+
+#### `require(string module)`
+Acting in a very similar way `npm install` does, if there is a (`dev|optional`)dependency from which the version can be obtained Wanted will do so, and default to `latest` otherwise.
+
+```
+var Wanted = require('wanted'),
+	wanted = new Wanted(),
+	myModule = wanted.require('my-module');
+```
+
+#### `require(object module)`
+If more control is needed, you can specify the version you expect by providing a configuration object in which a (semver) version can be specified.
+
+```
+var Wanted = require('wanted'),
+	wanted = new Wanted(),
+	myModule = wanted.require({
+		name: 'my-module',
+		version: '1.0.0'
+	});
+```
+
+In this example the installed version is up- or downgraded to match the specified version.
+**NOTE** This has the potential to wreck havoc in your project as wanted will do as you say regardless of other dependencies, the module which will be up-/downgraded will be the one in your `node_modules` folder.
+
 ### `on(string event, function handler)`
 Register an event handler (refer to the [events section](###events) for all events and their handler arguments)
 
