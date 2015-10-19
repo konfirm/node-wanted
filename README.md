@@ -77,10 +77,10 @@ Start the dependency checks, the options object is entirely optional and contain
 - `scope` (default: `'devDependencies'`) - the scope within the `package.json` (e.g. `dependencies`, `devDependencies`, `optionalDependencies`). As of version 1.2.0 `scope` may be either a string with the scope name, or an array strings
 - `autoAccept` (default: false) - whether or not to update dependencies automatically (this setting has no effect if an `install`-handler is in place)
 
-### `require(mixed module)` (Added in 1.3.0)
-Require a module, which is installed if needed. There are two ways of using it:
+### `require(mixed module [, bool version])` (Added in 1.3.0, version option added in 1.3.1)
+Require a module, which is installed if needed. If the `version` argument is true(-ish), it will also check whether or not the version installed matches the version configured in package.json. In case there is no configuration the version to compare against will always be 'latest'.
 
-#### `require(string module)`
+#### `require(string module [, bool version])`
 Acting in a very similar way `npm install` does, if there is a (`dev|optional`)dependency from which the version can be obtained Wanted will do so, and default to `latest` otherwise.
 
 ```
@@ -89,8 +89,8 @@ var Wanted = require('wanted'),
 	myModule = wanted.require('my-module');
 ```
 
-#### `require(object module)`
-If more control is needed, you can specify the version you expect by providing a configuration object in which a (semver) version can be specified.
+#### `require(object module [, bool version])`
+If more control is needed, you can specify the version you expect by providing a configuration object in which a (semver) version can be specified, if a version is specified it will act as if the `version` argument contained `true` and the installed version (if-any) will be compared to the required version.
 
 ```
 var Wanted = require('wanted'),
