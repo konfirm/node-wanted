@@ -124,4 +124,28 @@ lab.experiment('Wanted - Unknown', function() {
 		});
 	});
 
+	lab.experiment('Install version specific requirements', function() {
+		lab.test('Require an unknown module', {timeout: 15000}, function(done) {
+			var wanted = new Wanted(),
+				blame = wanted.require('blame');
+
+			//  we expect the blame module to exist and be the (version agnostic) module we wanted
+			Code.expect('stack' in blame).to.equal(true);
+			Code.expect(typeof blame.stack).to.equal('function');
+
+			done();
+		});
+
+		lab.test('Require the (implicit) latest version', {timeout: 15000}, function(done) {
+			var wanted = new Wanted(),
+				blame = wanted.require('blame', true);
+
+			//  we expect the blame module to exist and be the (version agnostic) module we wanted
+			Code.expect('stack' in blame).to.equal(true);
+			Code.expect(typeof blame.stack).to.equal('function');
+
+			done();
+		});
+	});
+
 });
