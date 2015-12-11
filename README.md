@@ -49,7 +49,7 @@ If any missing/outdated dependency is encountered it will emit and `error`-event
 ### Finegrained control
 For more demanding development workflows where it is necessary to control each individual package (e.g. you need to stick to a specific version and cannot trust yourself or co-workers to leave the `package.json` alone), you can listen to `install`-events and choose to `accept` or `reject` the installation
 ```js
-var Wanted = require('./lib/wanted'),
+var Wanted = require('wanted'),
 	wanted = new Wanted();
 
 wanted.on('install', function(module) {
