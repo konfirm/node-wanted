@@ -1,13 +1,14 @@
 #!/usr/bin/env node
+'use strict';
 
 var Wanted = require('../lib/wanted'),
 	arg = require('minimist')(process.argv.slice(2)),
 	wanted = new Wanted(),
 	translate = {
-		'complete': ' automatic update',
-		'current': '       up to date',
-		'install': 'need installation',
-		'upgrade': '    needs upgrade'
+		complete: '  automatic update',
+		current:  '        up to date',
+		install:  'needs installation',
+		upgrade:  '     needs upgrade'
 	},
 	config = {
 		scope: 'devDependencies',
@@ -17,6 +18,7 @@ var Wanted = require('../lib/wanted'),
 if (arg.scope) {
 	config.scope = arg.scope;
 }
+
 if (arg.auto) {
 	config.autoAccept = arg.auto;
 }
@@ -57,4 +59,3 @@ wanted.on('ready', function(state) {
 });
 
 wanted.check(config);
-

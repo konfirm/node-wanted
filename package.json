@@ -4,7 +4,7 @@
   "description": "Get dependencies on par programmatically",
   "main": "lib/wanted.js",
   "scripts": {
-    "posttest": "./node_modules/.bin/nsp audit-package",
+    "posttest": "./node_modules/.bin/nsp check",
     "test": "./node_modules/.bin/lab -f -t 100 -m 3000 test",
     "test-coverage": "./node_modules/.bin/lab -f -r html -m 3000 -o report.html test"
   },
@@ -18,7 +18,8 @@
   "keywords": [
     "dependency",
     "update",
-    "install"
+    "install",
+    "require"
   ],
   "author": "Rogier Spieker",
   "license": "GPL-2.0",
@@ -29,14 +30,14 @@
   "dependencies": {
     "minimist": "^1.2.0",
     "polymorphic": "^1.2.8",
-    "semver": "^5.0.3",
+    "semver": "^5.1.0",
     "submerge": "^1.0.9"
   },
   "devDependencies": {
     "code": "^1.5.0",
     "coveralls": "^2.11.4",
     "lab": "^6.2.0",
-    "nsp": "^1.1.0",
-    "rimraf": "^2.4.3"
+    "nsp": "^2.1.0",
+    "rimraf": "^2.4.4"
   }
 }
