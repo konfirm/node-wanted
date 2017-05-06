@@ -34,9 +34,9 @@
     "submerge": "^1.1.1"
   },
   "devDependencies": {
-    "code": "^3.0.2",
+    "code": "^4.0.0",
     "coveralls": "^2.11.12",
-    "lab": "^11.0.1",
+    "lab": "^13.0.4",
     "nsp": "^2.6.1",
     "rimraf": "^2.5.4"
   },
